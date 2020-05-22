@@ -10,7 +10,7 @@ import dlib
 import cv2
 def model_predict():
 
-
+ print("Start detection")
  def eye_aspect_ratio(eye):
     # compute the euclidean distances between the two sets of vertical eye landmarks (x, y)-coordinates
     A = dist.euclidean(eye[1], eye[5])
