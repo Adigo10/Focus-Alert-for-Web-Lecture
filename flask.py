@@ -1,4 +1,4 @@
-
+from __future__ import division, print_function
 from scipy.spatial import distance as dist
 from imutils.video import VideoStream
 from imutils import face_utils
@@ -8,14 +8,14 @@ import imutils
 import time
 import dlib
 import cv2
+#Focus track file
 import focus
-     
 
 from flask import Flask, redirect, url_for, request, render_template
 from werkzeug.utils import secure_filename
 from gevent.pywsgi import WSGIServer
 
-from __future__ import division, print_function
+
 # coding=utf-8
 import sys
 import os
@@ -35,7 +35,7 @@ def index():
 @app.route('/predict', methods=['GET', 'POST'])
 def cameraon():
     eye_aspect_ratio()
-    
+
 
 if __name__ == '__main__':
     # app.run(port=5002, debug=True)

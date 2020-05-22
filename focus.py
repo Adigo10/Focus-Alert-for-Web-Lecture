@@ -45,11 +45,9 @@ print("starting video stream thread...")
 vs = cv2.VideoCapture(0)
 time.sleep(1.0)
 
-# loop over frames from the video stream
 while True:
-    # grab the frame from the threaded video file stream, resize
-    # it, and convert it to grayscale
-    # channels)
+
+    # convert frames to grayscale
     _,frame = vs.read()
     frame = imutils.resize(frame, width=450)
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -76,37 +74,32 @@ while True:
         leftEAR = eye_aspect_ratio(leftEye)
         rightEAR = eye_aspect_ratio(rightEye)
 
-        # average the eye aspect ratio together for both eyes
+        # average of eye aspect ratio
         ear = (leftEAR + rightEAR) / 2.0
 
-        # compute the convex hull for the left and right eye, then
-        # visualize each of the eyes
+        # visualize the convex hull for the left and right eye
+
         leftEyeHull = cv2.convexHull(leftEye)
         rightEyeHull = cv2.convexHull(rightEye)
         cv2.drawContours(frame, [leftEyeHull], -1, (0, 255, 0), 1)
         cv2.drawContours(frame, [rightEyeHull], -1, (0, 255, 0), 1)
 
-        # check to see if the eye aspect ratio is below the blink
-        # threshold, and if so, increment the blink frame counter
-        if ear < EYE_AR_THRESH:
+        #if eye aspect ratio is below the blink threshold increment the blink counter
+        if (ear < EYE_AR_THRESH or len(rects) == 0):
             COUNTER += 1
-            # if the eyes were closed for a sufficient number of frames
+			# if the eyes were closed for a sufficient number of frames
 
             if COUNTER >= EYE_AR_CONSEC_FRAMES:
 
                 cv2.putText(frame, "FOCUS ALERT!", (10, 30),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
 
-        # otherwise, the eye aspect ratio is not below the blink
-        # threshold, so reset the counter and alarm
+        #the eye aspect ratio is not below the blink threshold, so reset the counter
         else:
             COUNTER = 0
 
-        # draw the computed eye aspect ratio on the frame to help
-        # with debugging and setting the correct eye aspect ratio
-        # thresholds and frame counters
-        cv2.putText(frame, "EAR: {:.2f}".format(ear), (300, 30),
-                     cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+        #computed eye aspect ratio on the frame
+        #cv2.putText(frame, "EAR: {:.2f}".format(ear), (300, 30),cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
 
     # show the frame
     cv2.imshow("Frame", frame)
