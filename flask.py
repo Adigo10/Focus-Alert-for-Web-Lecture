@@ -172,9 +172,9 @@ def model():
     if key == ord("q"):
         break
 
- # do a bit of cleanup
- cv2.destroyAllWindows()
- vs.release()
+  # do a bit of cleanup
+  cv2.destroyAllWindows()
+  vs.release()
 
 from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
