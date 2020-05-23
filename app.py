@@ -64,6 +64,7 @@ def model():
     if(len(rects) == 0):
         count += 1
         print(count)
+        cv2.putText(frame, "!!!!Face Not Detected!!!!", (10, 30),cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
 
     else:
 
