@@ -191,7 +191,7 @@ mysql = MySQL(app)
 
 
 @app.route('/', methods=['GET', 'POST'])
-def index():
+def model():
     if request.method == "POST":
         details = request.form
         
@@ -207,4 +207,4 @@ def index():
 
 
 if _name_ == '_main_':
-    app.run()
+   app.run()
