@@ -3,7 +3,6 @@
 from scipy.spatial import distance as dist
 from imutils.video import VideoStream
 from imutils import face_utils
-from threading import Thread
 import numpy as np
 import imutils
 import time
@@ -64,6 +63,8 @@ while True:
     if(len(rects) == 0):
         count += 1
         print(count)
+        cv2.putText(frame, "!!!!Face Not Detected!!!!", (10, 30),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
 
     else:
 
