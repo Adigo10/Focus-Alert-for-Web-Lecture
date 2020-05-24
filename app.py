@@ -186,4 +186,24 @@ app.config['MYSQL_USER'] = 'aashishraj'
 app.config['MYSQL_PASSWORD'] = 'hello123'
 app.config['MYSQL_DB'] = 'trackit_student'
 
-#
+mysql = MySQL(app)
+
+
+@app.route('/', methods=['GET', 'POST'])
+def model():
+    if request.method == "POST":
+        details = request.form
+
+        cur = mysql.connection.cursor()
+        if(flag==0):
+            cur.execute("INSERT INTO trackit_student("Result") VALUES ("Alert")", (firstName, lastName))
+        else:
+            cur.execute("INSERT INTO trackit_student("Result") VALUES ("Non Alert")", (firstName, lastName))
+        mysql.connection.commit()
+        cur.close()
+        return 'success'
+    return render_template('index.html')
+
+
+if _name_ == '_main_':
+   app.run()
