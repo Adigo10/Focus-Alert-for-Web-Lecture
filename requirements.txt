@@ -1,0 +1,7 @@
+numpy==1.17.2
+Flask==1.1.1
+imutils==0.5.3
+dlib==19.19.0
+opencv_python_headless==4.2.0.34
+scipy==1.4.1
+flask_mysqldb==0.2.0
