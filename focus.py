@@ -23,7 +23,7 @@ def eye_aspect_ratio(eye):
 #alert threshold for eye
 EYE_AR_THRESH = 0.30
 #No. of frames after which alert will work
-EYE_AR_CONSEC_FRAMES = 120
+EYE_AR_CONSEC_FRAMES = 60
 
 # initialize the frame count as well as a boolean used to
 # indicate if the alarm is going off
@@ -63,8 +63,8 @@ while True:
     if(len(rects) == 0):
         count += 1
         print(count)
-        cv2.putText(frame, "!!!!Face Not Detected!!!!", (10, 30),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+        cv2.putText(frame, "-----Face Not Detected-----", (10, 30),
+                    cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
 
     else:
 
@@ -153,8 +153,8 @@ while True:
 	            print(angle)
 	            if count >= EYE_AR_CONSEC_FRAMES:
 
-	                cv2.putText(frame, "!!!!FOCUS ON THE SCREEN!!!!", (10, 30),
-	                            cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+	                cv2.putText(frame, "*****FOCUS ON THE SCREEN*****", (10, 30),
+	                            cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
 
 	        #the eye aspect ratio is not below the blink threshold, so reset the count
 	        else:
