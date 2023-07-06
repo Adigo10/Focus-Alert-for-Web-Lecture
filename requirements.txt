@@ -3,5 +3,5 @@ Flask==1.1.1
 imutils==0.5.3
 dlib==19.19.0
 opencv_python_headless==4.2.0.34
-scipy==1.4.1
+scipy==1.10.0
 flask_mysqldb==0.2.0
